@@ -35,10 +35,10 @@ Thank you for joining us on this journey!
 In the following study, you will be reading text in various typefaces. After each text, we will ask you some questions to assess the understanding of your reading. Next, we will ask you to evaluate your user experience with the selected typeface. Lastly, we will friendly request you to take a 5 second break to be refreshed for the next section of the study.
 <br/>
 <br/>
-Whenever you go to the next page you may not return to the previous. Keep this in mind, before clicking "Next".
+Whenever you go to the next page you may not return to the previous. Keep this in mind, before clicking &quot;Next&quot;.
 <br/>
 <br/>
-Click "Next" to begin.
+Click &quot;Next&quot; to begin.
 </div>
       <Buttons>
         <Button onClick={props.goNext}>Next</Button>

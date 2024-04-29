@@ -76,7 +76,7 @@ const saveAnswer = (i: number, val: number) => {
     <Container>
         How did you experierience the typeface of the text you just read?
         {Data.map((data, i) => {
-            return <Item>
+            return <Item key={i}>
                 <Left $area={"left"}>{data[0]} </Left>
                 <Center $area={"center"}>
                     <RadioGroup>
