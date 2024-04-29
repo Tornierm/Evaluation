@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1713969371821,
+      "tag": "0000_optimal_ikaris",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1713969407877,
+      "tag": "0001_confused_blade",
+      "breakpoints": true
+    }
+  ]
+}
