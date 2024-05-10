@@ -137,7 +137,8 @@ export default function Home() {
     if(step === Steps.Start){
       incrementSteps()
     } else if(step === Steps.Finish){
-      // submit the data
+      setStep(Steps.Start)
+      setTextStep(TextStep.Text)
     } else{
       if(textStep === TextStep.Timer){
         incrementSteps()
@@ -163,6 +164,7 @@ export default function Home() {
     } catch (error) {
       console.error('Error submitting data:', error);
     }
+    nextStep();
   }
 
   function getContent(step: Steps, textStep: TextStep): any {
