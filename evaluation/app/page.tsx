@@ -1,7 +1,7 @@
 'use client'
 import "dotenv/config"
 import { useState } from "react";
-import { Family, FontConfig, Steps, Style, TextStep } from "./components/types";
+import { Family, FontConfig, Steps, Style, SubmissionData, TextStep } from "./components/types";
 import TextBox from "./components/TextBox";
 import styled from "styled-components";
 import { Button } from "@/components/ui/button";
@@ -37,18 +37,82 @@ const Nav = styled.div`
   height: 100%;
 `
 
+const defaultData: SubmissionData = {
+  latinSquare: [],
+  T1Q1: 0,
+  T1Q2: 0,
+  T1Q3: 0,
+  T1Q4: 0,
+  UEQ1: [],
+  T2Q1: 0,
+  T2Q2: 0,
+  T2Q3: 0,
+  T2Q4: 0,
+  UEQ2: [],
+  T3Q1: 0,
+  T3Q2: 0,
+  T3Q3: 0,
+  T3Q4: 0,
+  UEQ3: [],
+  T4Q1: 0,
+  T4Q2: 0,
+  T4Q3: 0,
+  T4Q4: 0,
+  UEQ4: [],
+  T5Q1: 0,
+  T5Q2: 0,
+  T5Q3: 0,
+  T5Q4: 0,
+  UEQ5: [],
+  T6Q1: 0,
+  T6Q2: 0,
+  T6Q3: 0,
+  T6Q4: 0,
+  UEQ6: [],
+  T7Q1: 0,
+  T7Q2: 0,
+  T7Q3: 0,
+  T7Q4: 0,
+  UEQ7: [],
+  T8Q1: 0,
+  T8Q2: 0,
+  T8Q3: 0,
+  T8Q4: 0,
+  UEQ8: []
+}
 
+function getDefaultData(latinSquareIndex: number): SubmissionData{
+  return {...defaultData, latinSquare: latinSquareTable[latinSquareIndex]}
+}
 
 export default function Home() {
   const [step, setStep] = useState<Steps>(Steps.Start)
   const [textStep, setTextStep] = useState<TextStep>(TextStep.Text)
 
   const latinSquareIndex = Math.floor(Math.random() * 8);
+  const [data, setData] = useState<SubmissionData>(getDefaultData(latinSquareIndex))
 
-  // insert()
-  const config: FontConfig = {
-    "family": Family.Times,
-    "style": Style["Bold Italic"],
+  function pushAnswerToData(answer: number | number[]) {
+    const tmp = getAttribute()
+    setData({...data, [tmp]: answer})
+
+    console.log(JSON.stringify({...data, [tmp]: answer}))
+  }
+
+  function getAttribute(): string{
+    let tmp = "empty";
+    if(step === Steps.Finish || step === Steps.Start){
+      return "empty";
+    } else if (textStep === TextStep.Text || textStep === TextStep.Timer) {
+      return "empty";
+    } else {
+      if(textStep === TextStep.Usability) {
+        tmp = "UEQ" + step
+      } else {
+        tmp = "T" + step + "Q" + textStep
+      }
+    }
+    return tmp
   }
 
   function incrementSteps(): void {
@@ -73,7 +137,8 @@ export default function Home() {
     if(step === Steps.Start){
       incrementSteps()
     } else if(step === Steps.Finish){
-      // submit the data
+      setStep(Steps.Start)
+      setTextStep(TextStep.Text)
     } else{
       if(textStep === TextStep.Timer){
         incrementSteps()
@@ -82,11 +147,33 @@ export default function Home() {
     }
   }
 
+  async function submitData(data: any) {
+    try {
+      const response = await fetch('/api/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+      if (!response.ok) {
+        throw new Error('Failed to submit data');
+      }
+      console.log('Data submitted successfully!');
+      // Optionally, you can reset the form or perform other actions upon successful submission
+    } catch (error) {
+      console.error('Error submitting data:', error);
+    }
+    nextStep();
+  }
+
   function getContent(step: Steps, textStep: TextStep): any {
     if(step === Steps.Start){
       return <Welcome goNext={nextStep}></Welcome>
     } else if (step === Steps.Finish){
-      return <Finish></Finish>
+      
+
+      return <Finish submit={() => submitData(data)}></Finish>
     } else {
       return getTextContent(step, textStep);
     }
@@ -125,17 +212,17 @@ export default function Home() {
     if(textStep === TextStep.Text){
       return <TextBox goNext={nextStep} text={texts[step - 1]} config={getTextConfig()}></TextBox>
     } else if (textStep === TextStep["Question 1"]){
-      return <QuestionBox goNext={nextStep} key={questions[step - 1][0].question} question={questions[step - 1][0]}></QuestionBox>
+      return <QuestionBox pushAnswerToData={pushAnswerToData} goNext={nextStep} key={questions[step - 1][0].question} question={questions[step - 1][0]}></QuestionBox>
     } else if (textStep === TextStep["Question 2"]){
-      return <QuestionBox goNext={nextStep} key={questions[step - 1][1].question} question={questions[step - 1][1]}></QuestionBox>
+      return <QuestionBox pushAnswerToData={pushAnswerToData} goNext={nextStep} key={questions[step - 1][1].question} question={questions[step - 1][1]}></QuestionBox>
     } else if (textStep === TextStep["Question 3"]){
-      return <QuestionBox goNext={nextStep} key={questions[step - 1][2].question} question={questions[step - 1][2]}></QuestionBox>
+      return <QuestionBox pushAnswerToData={pushAnswerToData} goNext={nextStep} key={questions[step - 1][2].question} question={questions[step - 1][2]}></QuestionBox>
     } else if (textStep === TextStep["Question 4"]){
-      return <QuestionBox goNext={nextStep} key={questions[step - 1][3].question} question={questions[step - 1][3]}></QuestionBox>
+      return <QuestionBox pushAnswerToData={pushAnswerToData} goNext={nextStep} key={questions[step - 1][3].question} question={questions[step - 1][3]}></QuestionBox>
     } else if (textStep === TextStep["Timer"]){
       return <Waiting goNext={nextStep}/>
     }  else {
-      return <UEQ goNext={nextStep}></UEQ>
+      return <UEQ pushAnswerToData={pushAnswerToData} goNext={nextStep}></UEQ>
     }
   }
 

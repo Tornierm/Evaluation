@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 interface IOwnProps {
     question: Question;
     goNext: () => void;
+    pushAnswerToData: (answer: number) => void;
 } 
 
 const QuestionContainer = styled.p`
@@ -48,6 +49,13 @@ export default function QuestionBox(props: IOwnProps) {
 
 const [active, setActive] = useState<number | undefined>(undefined)
 
+const submit = () => {
+    if(typeof active === 'number'){
+        props.pushAnswerToData(active)
+    }
+    props.goNext()
+}
+
   return (
     <Container>
         <QuestionContainer>
@@ -60,7 +68,7 @@ const [active, setActive] = useState<number | undefined>(undefined)
             </AnswerContainer>
         })}
         <Buttons>
-          <Button disabled={active == undefined} onClick={props.goNext}>Next</Button>
+          <Button disabled={active == undefined} onClick={submit}>Next</Button>
         </Buttons>
     </Container>
   )

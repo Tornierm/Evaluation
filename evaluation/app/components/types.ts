@@ -42,7 +42,46 @@ export interface Question{
     answers: string[];
 }
 
-
-
-
-//Regular, Bold, Italic, and Bold Italic
+export interface SubmissionData{
+    latinSquare: number[],
+    T1Q1: number,
+    T1Q2: number,
+    T1Q3: number,
+    T1Q4: number,
+    UEQ1: number[],
+    T2Q1: number,
+    T2Q2: number,
+    T2Q3: number,
+    T2Q4: number,
+    UEQ2: number[],
+    T3Q1: number,
+    T3Q2: number,
+    T3Q3: number,
+    T3Q4: number,
+    UEQ3: number[],
+    T4Q1: number,
+    T4Q2: number,
+    T4Q3: number,
+    T4Q4: number,
+    UEQ4: number[],
+    T5Q1: number,
+    T5Q2: number,
+    T5Q3: number,
+    T5Q4: number,
+    UEQ5: number[],
+    T6Q1: number,
+    T6Q2: number,
+    T6Q3: number,
+    T6Q4: number,
+    UEQ6: number[],
+    T7Q1: number,
+    T7Q2: number,
+    T7Q3: number,
+    T7Q4: number,
+    UEQ7: number[],
+    T8Q1: number,
+    T8Q2: number,
+    T8Q3: number,
+    T8Q4: number,
+    UEQ8: number[],
+}

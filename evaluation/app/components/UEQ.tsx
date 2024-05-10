@@ -62,6 +62,7 @@ const Data :string[][] = [
 
 interface IOwnProps {
     goNext: () => void;
+    pushAnswerToData: (answer: number[]) => void;
 } 
 
 export default function UEQ(props: IOwnProps) {
@@ -72,6 +73,19 @@ const saveAnswer = (i: number, val: number) => {
     tmp[i] = val;
     setAnswers(tmp)
 }
+
+const submit = () => {
+    const areAllNumbers = answers.every((answer) => typeof answer === 'number');
+    if(areAllNumbers){
+        console.log("are")
+        const filteredAnswers = answers.filter((answer) => typeof answer === 'number') as number[];
+        props.pushAnswerToData(filteredAnswers)
+    } else {
+        console.log("are not")
+    }
+    props.goNext()
+}
+
   return (
     <Container>
         How did you experierience the typeface of the text you just read?
@@ -95,7 +109,7 @@ const saveAnswer = (i: number, val: number) => {
             </Item>
         })}
         <Buttons>
-          <Button disabled={answers.includes(undefined)} onClick={props.goNext}>Next</Button>
+          <Button disabled={answers.includes(undefined)} onClick={submit}>Next</Button>
         </Buttons>
     </Container>
   )
