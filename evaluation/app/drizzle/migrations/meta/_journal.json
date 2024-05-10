@@ -5,15 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1713969371821,
-      "tag": "0000_optimal_ikaris",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1713969407877,
-      "tag": "0001_confused_blade",
+      "when": 1715359497558,
+      "tag": "0000_minor_living_tribunal",
       "breakpoints": true
     }
   ]

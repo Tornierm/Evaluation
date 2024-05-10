@@ -1,11 +1,11 @@
 {
-  "id": "2291862e-08e6-4a8f-b254-08df9be70072",
+  "id": "f064a534-5857-4b44-ae1f-0aef0044ffec",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
   "tables": {
-    "user": {
-      "name": "user",
+    "submission": {
+      "name": "submission",
       "schema": "",
       "columns": {
         "id": {
@@ -15,17 +15,260 @@
           "notNull": true,
           "default": "gen_random_uuid()"
         },
-        "name": {
-          "name": "name",
-          "type": "varchar(255)",
+        "latinSquare": {
+          "name": "latinSquare",
+          "type": "integer[]",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "ARRAY[]::integer[]"
+        },
+        "T1Q1": {
+          "name": "T1Q1",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
-        "description": {
-          "name": "description",
-          "type": "varchar(255)",
+        "T1Q2": {
+          "name": "T1Q2",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
+        },
+        "T1Q3": {
+          "name": "T1Q3",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T1Q4": {
+          "name": "T1Q4",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "UEQ1": {
+          "name": "UEQ1",
+          "type": "integer[]",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "ARRAY[]::integer[]"
+        },
+        "T2Q1": {
+          "name": "T2Q1",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T2Q2": {
+          "name": "T2Q2",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T2Q3": {
+          "name": "T2Q3",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T2Q4": {
+          "name": "T2Q4",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "UEQ2": {
+          "name": "UEQ2",
+          "type": "integer[]",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "ARRAY[]::integer[]"
+        },
+        "T3Q1": {
+          "name": "T3Q1",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T3Q2": {
+          "name": "T3Q2",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T3Q3": {
+          "name": "T3Q3",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T3Q4": {
+          "name": "T3Q4",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "UEQ3": {
+          "name": "UEQ3",
+          "type": "integer[]",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "ARRAY[]::integer[]"
+        },
+        "T4Q1": {
+          "name": "T4Q1",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T4Q2": {
+          "name": "T4Q2",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T4Q3": {
+          "name": "T4Q3",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T4Q4": {
+          "name": "T4Q4",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "UEQ4": {
+          "name": "UEQ4",
+          "type": "integer[]",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "ARRAY[]::integer[]"
+        },
+        "T5Q1": {
+          "name": "T5Q1",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T5Q2": {
+          "name": "T5Q2",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T5Q3": {
+          "name": "T5Q3",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T5Q4": {
+          "name": "T5Q4",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "UEQ5": {
+          "name": "UEQ5",
+          "type": "integer[]",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "ARRAY[]::integer[]"
+        },
+        "T6Q1": {
+          "name": "T6Q1",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T6Q2": {
+          "name": "T6Q2",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T6Q3": {
+          "name": "T6Q3",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T6Q4": {
+          "name": "T6Q4",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "UEQ6": {
+          "name": "UEQ6",
+          "type": "integer[]",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "ARRAY[]::integer[]"
+        },
+        "T7Q1": {
+          "name": "T7Q1",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T7Q2": {
+          "name": "T7Q2",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T7Q3": {
+          "name": "T7Q3",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T7Q4": {
+          "name": "T7Q4",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "UEQ7": {
+          "name": "UEQ7",
+          "type": "integer[]",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "ARRAY[]::integer[]"
+        },
+        "T8Q1": {
+          "name": "T8Q1",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T8Q2": {
+          "name": "T8Q2",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T8Q3": {
+          "name": "T8Q3",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "T8Q4": {
+          "name": "T8Q4",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "UEQ8": {
+          "name": "UEQ8",
+          "type": "integer[]",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "ARRAY[]::integer[]"
         }
       },
       "indexes": {},
